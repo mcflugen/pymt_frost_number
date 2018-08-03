@@ -7,7 +7,15 @@ from setuptools import setup, find_packages
 from distutils.extension import Extension
 import versioneer
 
-from model_metadata.utils import get_cmdclass, get_entry_points
+try:
+    import model_metadata
+except ImportError:
+    def get_cmdclass(*args, cmdclass=None):
+        return cmdclass
+    def get_entry_points(*args):
+        return None
+else:
+    from model_metadata.utils import get_cmdclass, get_entry_points
 
 
 
