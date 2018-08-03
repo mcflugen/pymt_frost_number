@@ -1,10 +1,10 @@
 {% set name = "pymt_frost_number" %}
-{% set version = "0.1" %}
+{% set data = load_setup_py_data() %}
 {% set build = "0" %}
 
 package:
   name: {{ name }}
-  version: {{ version }}
+  version: {{ data.get('version') }}
 
 source:
   path: ..
