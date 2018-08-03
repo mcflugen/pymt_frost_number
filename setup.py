@@ -5,7 +5,6 @@ from setuptools import setup, find_packages
 
 # from Cython.Build import cythonize
 from distutils.extension import Extension
-import numpy as np
 import versioneer
 
 from model_metadata.utils import get_cmdclass, get_entry_points
