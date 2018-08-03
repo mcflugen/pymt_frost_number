@@ -3,21 +3,18 @@ import os, sys
 
 from setuptools import setup, find_packages
 
-# from Cython.Build import cythonize
 from distutils.extension import Extension
 import versioneer
 
 try:
     import model_metadata
 except ImportError:
-    def get_cmdclass(*args, cmdclass=None):
-        return cmdclass
+    def get_cmdclass(*args, **kwds):
+        return kwds.get("cmdclass", None)
     def get_entry_points(*args):
         return None
 else:
     from model_metadata.utils import get_cmdclass, get_entry_points
-
-
 
 
 packages = find_packages(include=["pymt_frost_number"])
