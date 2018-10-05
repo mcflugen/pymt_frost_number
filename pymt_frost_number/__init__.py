@@ -1,9 +1,11 @@
 #! /usr/bin/env python
 
+from .bmi import BmiFrostnumberMethod
 
-from .frost_number import BmiFrostnumberMethod
 
+__all__ = ["BmiFrostnumberMethod"]
 
 from ._version import get_versions
-__version__ = get_versions()['version']
+
+__version__ = get_versions()["version"]
 del get_versions

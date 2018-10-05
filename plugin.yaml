@@ -1,0 +1,20 @@
+build:
+  define_macros: []
+  extra_compile_args: []
+  include_dirs: []
+  libraries: []
+  library_dirs: []
+  undef_macros: []
+info:
+  github_username: mcflugen
+  plugin_author: Eric Hutton
+  plugin_license: MIT
+  summary: PyMT plugin for frost_number
+library:
+  entry_point: BmiFrostNumberMethod=permamodel.components.bmi_frost_number:BmiFrostnumberMethod
+  language: python
+  register: ''
+plugin:
+  name: frost_number
+  requirements:
+  - permamodel

@@ -1,4 +1,4 @@
 name: frost_number
 language: python
-package: permamodel.components.bmi_frost_number
+package: frost_number
 class: BmiFrostnumberMethod

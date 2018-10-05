@@ -1,43 +1,46 @@
-{% set name = "pymt_frost_number" %}
 {% set data = load_setup_py_data() %}
-{% set build = "0" %}
 
 package:
-  name: {{ name }}
+  name: "pymt_frost_number"
   version: {{ data.get('version') }}
 
 source:
   path: ..
 
 build:
-  number: {{ build }}
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
+  build:
+    - {{ compiler('c') }}
   host:
     - python
-    - setuptools
-    - numpy 1.11.*
+    - pip
     - cython
+    - numpy 1.11.*
     - model_metadata
-    - permamodel >0.1.3
+    - permamodel 
 
   run:
     - python
-    - setuptools
+    - {{ pin_compatible('numpy') }}
     - pymt
-    - permamodel >0.1.3
+    - permamodel 
 
 test:
   requires:
     - bmi-tester
+    - model_metadata
   imports:
+    - pymt
     - pymt_frost_number
   commands:
-    - bmi-test permamodel.components.bmi_frost_number:BmiFrostnumberMethod --infile=$(mmd-stage BmiFrostnumberMethod .)
+    - config_file=$(mmd-stage BmiFrostnumberMethod . > MANIFEST && mmd-query BmiFrostnumberMethod --var=run.config_file.path)
+    - bmi-test pymt_frost_number.bmi:BmiFrostnumberMethod --infile=$config_file --manifest=MANIFEST -v
 
 about:
-  summary: PyMT plugin for frost_number.
+  summary: Python package that wraps the frost_number BMI.
   home: https://github.com/mcflugen/pymt_frost_number
   license: MIT license
   license_file: LICENSE
