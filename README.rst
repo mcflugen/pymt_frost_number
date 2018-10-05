@@ -3,8 +3,8 @@ pymt_frost_number
 =================
 
 
-.. image:: https://img.shields.io/badge/CSDMS-BMI-green.svg
-        :target: https://github.com/csdms/pymt
+.. image:: https://img.shields.io/badge/CSDMS-Basic%20Model%20Interface-green.svg
+        :target: https://bmi-forum.readthedocs.io/
         :alt: Basic Model Interface
 
 .. image:: https://img.shields.io/badge/recipe-pymt_frost_number-green.svg
